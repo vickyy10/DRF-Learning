@@ -169,14 +169,28 @@ class PersonViewsets(viewsets.ViewSet):
 
     def update(self,req,pk= None):
             if pk is not None:
-                data=Person.objects.get(id=pk)
-                serializer=PesronModelSerializer(data=data,partial=False)
+                obj=Person.objects.get(id=pk)
+                serializer=PesronModelSerializer(obj,data=req.data,partial=False)
                 if serializer.is_valid():
                     serializer.save()
                     return Response(serializer.data,status=status.HTTP_200_OK)
 
 
-    def 
+    def partial_update(self,request,pk=None):
+        if pk is not None:
+                obj=Person.objects.get(id=pk)
+                serializer=PesronModelSerializer(obj,data=request.data,partial=True)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(serializer.data,status=status.HTTP_200_OK)
+                
+    def delete(self,request,pk=None):
+
+        if pk is not None: 
+            obj=Person.objects.get(id=pk)
+            obj.delete()
+
+            return Response('msg':'data deleted')
         
 
 # /////genericviews//////////
