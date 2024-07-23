@@ -190,7 +190,7 @@ class PersonViewsets(viewsets.ViewSet):
             obj=Person.objects.get(id=pk)
             obj.delete()
 
-            return Response('msg':'data deleted')
+            return Response({'msg':'data deleted'})
         
 
 # /////genericviews//////////
