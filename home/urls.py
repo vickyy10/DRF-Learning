@@ -14,6 +14,5 @@ urlpatterns = [
     path('',include(router.urls)),
     path('person/',views.Personview),
     path('personclass/',PersonClassview.as_view()),
-    path('PersonConcreteGenricView/',PersonConcreteGenricView.as_view())
  
 ]
